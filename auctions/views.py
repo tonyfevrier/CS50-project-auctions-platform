@@ -78,3 +78,11 @@ def newlisting(request):
                                 url = request.POST["url"],
                                 category = request.POST["category"])
     return render(request,"auctions/newlisting.html")
+
+
+def listing(request, listing_id):
+    """
+    View rendering the listing associated with the listing id 
+    """
+    listing = Listings.objects.get(id = listing_id)
+    return render(request,"auctions/listing.html", context={"listing":listing})
