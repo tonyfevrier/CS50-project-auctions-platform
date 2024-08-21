@@ -1,0 +1,12 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <form action="newlisting">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="description" placeholder="description">
+        <input type="number" placeholder="Initial price">
+        <input type="url" placeholder="url">
+        <input type="text" placeholder="category">
+        <input type="submit">
+    </form>
+{% endblock %}
