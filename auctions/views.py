@@ -4,12 +4,14 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from auctions.models import Listings 
 
 from .models import User
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    listings = Listings.objects.all()
+    return render(request, "auctions/index.html",context={'listings':listings})
 
 
 def login_view(request):
@@ -69,4 +71,10 @@ def newlisting(request):
     """
     View rendering the page to create a new listing
     """
+    if request.method == "POST":
+        Listings.objects.create(title = request.POST['title'],
+                                description = request.POST['description'],
+                                price = request.POST["price"],
+                                url = request.POST["url"],
+                                category = request.POST["category"])
     return render(request,"auctions/newlisting.html")

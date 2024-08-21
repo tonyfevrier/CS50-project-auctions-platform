@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models 
 
+from datetime import datetime
+
 
 
 class User(AbstractUser):
@@ -13,5 +15,5 @@ class Listings(models.Model):
     price = models.FloatField(default=0.)
     url = models.URLField(default="",null=True,blank=True)
     category = models.TextField(default="",null=True,blank=True)
-    date = models.DateTimeField()
+    created_at = models.DateTimeField(default=datetime.now) 
 
