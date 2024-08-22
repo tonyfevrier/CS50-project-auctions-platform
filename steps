@@ -12,6 +12,11 @@ Listing Page: Clicking on a listing should take users to a page specific to that
     - `passer les infos du listing à la vue`
     - `tests unitaires : entrée d'une liste, bdd les enregistre bien et un id est créé.`
     If the user is signed in, the user should be able to add the item to their “Watchlist.” If the item is already on the watchlist, the user should be able to remove it.
+        - `add link watchlist to listing page`
+        - `ajouter un champ à la classe model pour savoir si l'user la suit, champ liste qui contient tous les user la suivant (liste initialement vide)`
+        - view : register when click
+        - pass to watchlist html all listings of a given user
+        - full the watchlist html with the listings of the user.
     If the user is signed in, the user should be able to bid on the item. The bid must be at least as large as the starting bid, and must be greater than any other bids that have been placed (if any). If the bid doesn’t meet those criteria, the user should be presented with an error.
     If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.
     If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
