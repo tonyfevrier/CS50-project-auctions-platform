@@ -86,3 +86,10 @@ def listing(request, id):
     """  
     listing = Listings.objects.get(id = id) 
     return render(request,"auctions/listing.html", context={"listing":listing})
+
+
+def watchlist(request):
+    """
+    View rendering the watchlist of a user
+    """
+    return render(request,"auctions/watchlist.html")
