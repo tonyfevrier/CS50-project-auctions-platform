@@ -4,7 +4,7 @@
     <h2>Active Listings</h2>
 
     {% for listing in listings %}
-    <a href="">
+    <a href="/listing/{{listing.id}}">
         <p>{{listing.title}}</p>
         <p>{{listing.description}}</p>
         <p>{{listing.price}} eur</p>

@@ -1,7 +1,7 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <form action="newlisting" method="post">
+    <form action="/newlisting" method="post">
         {% csrf_token %}
         <input type="text" name="title" placeholder="title">
         <input type="text" name="description" placeholder="description">
