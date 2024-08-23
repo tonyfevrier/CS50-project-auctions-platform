@@ -114,6 +114,12 @@ def toggletowatchlist(request,id):
 def submitbid(request,id):
     """
     View launched when a user submit a bid
-    """
-
-    return HttpResponseRedirect(f'/listing/{id}')
+    """  
+    price = request.POST["bid"]
+    listing = Listings.objects.get(id=id)
+    if price <= Bids.objects.filter(listing=listing).last().price:
+        message = "You have to write a price superior to the actual price"
+        return render(request, "auctions/listing.html", context={'message':message})
+    else:
+        bid = Bids.objects.create(price=price,listing=listing)
+        return render(request, "auctions/listing.html", context={'bid':bid,'bidnumber':len(Bids.objects.all())})
