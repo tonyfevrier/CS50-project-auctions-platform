@@ -76,10 +76,12 @@ def newlisting(request):
                                 description = request.POST['description'],
                                 price = request.POST["price"],
                                 url = request.POST["url"],
-                                category = request.POST["category"]) 
+                                category = request.POST["category"],
+                                creator = request.user) 
         
         Bids.objects.create(price = request.POST["price"],
-                            listing = Listings.objects.last())
+                            listing = Listings.objects.last(),
+                            bidder = request.user)
     return render(request,"auctions/newlisting.html")
 
 
@@ -127,7 +129,7 @@ def submitbid(request,id):
                                                                  'message':message,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing))})
     else: 
-        bid = Bids.objects.create(price=price,listing=listing)
+        bid = Bids.objects.create(price=price, listing=listing, bidder=request.user)
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  'bid':bid,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing))})

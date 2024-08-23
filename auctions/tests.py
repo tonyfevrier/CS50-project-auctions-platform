@@ -22,6 +22,7 @@ class TestListing(TestCase):
         self.assertEqual(listing.price,10.2)
         self.assertEqual(listing.url,"http://test")
         self.assertEqual(listing.category,"toys")
+        self.assertEqual(listing.creator, 'tony')
 
     def test_bid_initialization(self):
         self.register_and_login('tony','t@gmail.com','1234','1234') 
@@ -33,8 +34,10 @@ class TestListing(TestCase):
 
         self.assertEqual(bid1.price, 10.2)
         self.assertEqual(bid1.listing, Listings.objects.get(id=1))
+        self.assertEqual(bid1.bidder, 'tony')
         self.assertEqual(bid2.price, 100)
         self.assertEqual(bid2.listing, Listings.objects.get(id=2))
+        self.assertEqual(bid2.bidder, 'tony')
 
     def test_listing(self): 
         self.register_and_login('tony','t@gmail.com','1234','1234')  

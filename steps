@@ -36,11 +36,13 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - passer à la view listing l'info du user qui regarde
         - passer au listing l'info du user qui a créé le listing
         - Il faudra ptet mettre le user dans les url?et changer le followed en une liste de ceux qui suivent.
+        - test unitaire : login et bid d'un autre user et on vérifie que le bidder n'est pas le même.
 `Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.`
     - `create url, template, view for watchlist`
     - `add a button to go to watchlist of a login user redirecting to the watchlist`
 
 - CSS todo : Be creative on my CSS
+- voir si des vues requièrent le loginrequired
 
 # Idées de + : 
 
