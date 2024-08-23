@@ -105,3 +105,11 @@ def toggletowatchlist(request,id):
     listing.followed = not listing.followed
     listing.save()
     return HttpResponseRedirect(f'/listing/{id}')
+
+
+@login_required
+def submitbid(request,id):
+    """
+    View launched when a user submit a bid
+    """
+    return HttpResponseRedirect(f'/listing/{id}')
