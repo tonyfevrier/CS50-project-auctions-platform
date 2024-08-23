@@ -55,6 +55,19 @@ class TestListing(TestCase):
         self.client.get('/toggletowatchlist/1') 
         self.assertNotIn('tony',Listings.objects.first().followers)
 
+    def test_two_followers_of_a_watchlist(self):
+        """
+        Here two persons add the same listing to their watchlist and are registered as followers.
+        """
+        self.register_and_login('tony','t@gmail.com','1234','1234')  
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys")
+        self.client.get('/toggletowatchlist/1')
+        self.assertListEqual(Listings.objects.first().followers, ['tony'])
+        self.logout()
+        self.register_and_login('marine','m@gmail.com','5678','5678')
+        self.client.get('/toggletowatchlist/1')
+        self.assertListEqual(Listings.objects.first().followers, ['tony','marine'])
+        self.logout()
 
     def test_submit_inferior_bid(self):
         """In this case, there should be no bid saved in the database"""
@@ -74,6 +87,19 @@ class TestListing(TestCase):
         self.submit_a_bid("22.", 1)
         self.assertEqual(len(Bids.objects.all()), 3)
 
+    def test_other_user_submit_bid(self):
+        """
+        A person different from the listing creator submits a bid and the bidder is correctly registered.
+        """
+        self.register_and_login('tony','t@gmail.com','1234','1234')  
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+        self.logout()
+        self.register_and_login('marine','m@gmail.com','5678','5678') 
+        self.submit_a_bid("100",1)
+        self.assertEqual(Bids.objects.first().bidder, 'tony')
+        self.assertEqual(Bids.objects.last().bidder, 'marine')
+        self.logout()
+
     def register(self,username,email,password,confirmation):
         self.client.post("/register", data={'username':username,
                                         'email':email,
@@ -83,6 +109,9 @@ class TestListing(TestCase):
     def login(self,username,password):
         self.client.post("/login", data={'username':username,
                                          'password':password})
+        
+    def logout(self):
+        self.client.post("/logout")
         
     def register_and_login(self,username,email,password,confirmation):
         self.register(username, email, password, confirmation)
