@@ -11,20 +11,25 @@ Listing Page: Clicking on a listing should take users to a page specific to that
     - `créer une url, une vue pour chaque listing`
     - `passer les infos du listing à la vue`
     - `tests unitaires : entrée d'une liste, bdd les enregistre bien et un id est créé.`
-    If the user is signed in, the user should be able to add the item to their “Watchlist.” If the item is already on the watchlist, the user should be able to remove it.
+    `If the user is signed in, the user should be able to add the item to their “Watchlist.” If the item is already on the watchlist, the user should be able to remove it.`
         - `add link watchlist to listing page`
         - `ajouter un champ à la classe model pour savoir si l'user la suit, champ booléen initialement sur faux`
         - `view : register when click`
-        - html : le bouton change de contenu pour annuler ou non watchlist suivant le statut
-        - modifier la vue pour ça
-        - pass to watchlist html all listings of a given user
-        - full the watchlist html with the listings of the user.
+        - `html : le bouton change de contenu pour annuler ou non watchlist suivant le statut`
+        - `modifier la vue pour ça`
+        - `pass to watchlist html all listings of a given user`
+        - `full the watchlist html with the listings of the user.`
+        - ajouter le bouton watchlist que si loggé.
     If the user is signed in, the user should be able to bid on the item. The bid must be at least as large as the starting bid, and must be greater than any other bids that have been placed (if any). If the bid doesn’t meet those criteria, the user should be presented with an error.
+        - créer une url pour le bid
+        - créer le modèle pour les bid
+        - créer la vue associée en enregistrant le bid
+        - 
     If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.
     If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
     Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.
 
-Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.
+`Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.`
     - `create url, template, view for watchlist`
     - `add a button to go to watchlist of a login user redirecting to the watchlist`
 

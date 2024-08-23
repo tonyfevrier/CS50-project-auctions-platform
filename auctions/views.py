@@ -88,11 +88,13 @@ def listing(request, id):
     return render(request,"auctions/listing.html", context={"listing":listing})
 
 
+@login_required
 def watchlist(request):
     """
     View rendering the watchlist of a user
     """
-    return render(request,"auctions/watchlist.html")
+    watchlistings = Listings.objects.filter(followed = True)
+    return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
 
 
 def toggletowatchlist(request,id):
