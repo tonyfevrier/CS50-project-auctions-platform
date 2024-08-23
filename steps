@@ -24,10 +24,11 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `créer une url pour le bid`
         - `créer le modèle pour les bid (prix, doit être associée à un listing donné Foreignkey?)`
         - `ajouter un bid lors de l'enregistrement du listing.`
-        - créer la vue associée en enregistrant le bid
-        - passer le nb de bids effectués au listing.html
-        - ne pas oublier de présenter une erreur à passer à la vue si les critères non respectés
-        - tester l'enregistrement des bids dans la bdd
+        - `créer la vue associée en enregistrant le bid`
+        - `passer le nb de bids effectués au listing.html`
+        - `ne pas oublier de présenter une erreur à passer à la vue si les critères non respectés`
+        - `tester l'enregistrement des bids dans la bdd`
+        - changer le prix dans la vue de listing au fur et à mesure de son augmentation.
     If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.
     If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
     Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.

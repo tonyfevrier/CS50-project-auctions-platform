@@ -88,7 +88,9 @@ def listing(request, id):
     View rendering the listing associated with the listing id 
     """  
     listing = Listings.objects.get(id = id) 
-    return render(request,"auctions/listing.html", context={"listing":listing})
+    return render(request,"auctions/listing.html", context={"listing":listing,
+                                                            "bid":Bids.objects.filter(listing=listing).last(),
+                                                            "bidnumber":len(Bids.objects.filter(listing=listing))})
 
 
 @login_required
@@ -116,11 +118,16 @@ def submitbid(request,id):
     View launched when a user submit a bid
     """    
     price = request.POST["bid"]
-    listing = Listings.objects.get(id=id) 
-    if float(price) <= Bids.objects.filter(listing=listing).last().price: 
+    listing = Listings.objects.get(id=id)
+    lastbid = Bids.objects.filter(listing=listing).last() 
+    if float(price) <= lastbid.price: 
         message = "You have to write a price superior to the actual price"
-        return render(request, "auctions/listing.html", context={'message':message})
+        return render(request, "auctions/listing.html", context={"listing":listing,
+                                                                 "bid":lastbid,
+                                                                 'message':message,
+                                                                 'bidnumber':len(Bids.objects.filter(listing=listing))})
     else: 
         bid = Bids.objects.create(price=price,listing=listing)
-        return render(request, "auctions/listing.html", context={'bid':bid,
-                                                                 'bidnumber':len(Bids.objects.all())})
+        return render(request, "auctions/listing.html", context={"listing":listing,
+                                                                 'bid':bid,
+                                                                 'bidnumber':len(Bids.objects.filter(listing=listing))})

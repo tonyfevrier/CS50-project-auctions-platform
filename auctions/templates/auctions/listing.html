@@ -13,9 +13,16 @@
     {% endif %}
     <img src="{{listing.url}}" alt="image of the listing">
     <p>{{listing.description}}</p>
-    <h2>{{listing.price}}</h2>
+    <h2>{{bid.price}}eur</h2>
     {% if user.is_authenticated %}
-        <p>There are NUMBER bids.</p>
+        {% if message %}
+            <p>{{message}}</p>
+        {% endif %}
+        {% if bidnumber == 1 %}
+            <p>This is the initial bid.</p>
+        {% else %}
+            <p>There are {{bidnumber}} bids.</p>
+        {% endif %}
         <form action="/listing/{{listing.id}}/submitbid" method="post">
             {% csrf_token %}
             <input type="text" name="bid" id="bid">
