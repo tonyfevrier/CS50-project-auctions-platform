@@ -16,7 +16,8 @@ class Listings(models.Model):
     url = models.URLField(default="",null=True,blank=True)
     category = models.TextField(default="",null=True,blank=True)
     created_at = models.DateTimeField(default=timezone.now) 
-    followed = models.BooleanField(default=False)
+    #followed = models.BooleanField(default=False)
+    followers = models.JSONField(default=[])
     creator = models.TextField(default="")
 
 

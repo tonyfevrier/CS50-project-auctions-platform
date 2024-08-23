@@ -77,11 +77,11 @@ def newlisting(request):
                                 price = request.POST["price"],
                                 url = request.POST["url"],
                                 category = request.POST["category"],
-                                creator = request.user) 
+                                creator = request.user.username) 
         
         Bids.objects.create(price = request.POST["price"],
                             listing = Listings.objects.last(),
-                            bidder = request.user)
+                            bidder = request.user.username)
     return render(request,"auctions/newlisting.html")
 
 
@@ -99,8 +99,11 @@ def listing(request, id):
 def watchlist(request):
     """
     View rendering the watchlist of a user
-    """
-    watchlistings = Listings.objects.filter(followed = True)
+    """ 
+    watchlistings = []
+    for listing in Listings.objects.all():
+        if request.user.username in listing:
+            watchlistings.append(listing)
     return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
 
 
@@ -108,8 +111,11 @@ def toggletowatchlist(request,id):
     """
     View to add a user to the watchlist
     """
-    listing = Listings.objects.get(id=id)
-    listing.followed = not listing.followed
+    listing = Listings.objects.get(id=id) 
+    if request.user.username in listing.followers:
+        listing.followers.remove(request.user.username)
+    else:
+        listing.followers.append(request.user.username)
     listing.save()
     return HttpResponseRedirect(f'/listing/{id}')
 
@@ -118,7 +124,7 @@ def toggletowatchlist(request,id):
 def submitbid(request,id):
     """
     View launched when a user submit a bid
-    """    
+    """     
     price = request.POST["bid"]
     listing = Listings.objects.get(id=id)
     lastbid = Bids.objects.filter(listing=listing).last() 
@@ -129,7 +135,7 @@ def submitbid(request,id):
                                                                  'message':message,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing))})
     else: 
-        bid = Bids.objects.create(price=price, listing=listing, bidder=request.user)
+        bid = Bids.objects.create(price=price, listing=listing, bidder=request.user.username)
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  'bid':bid,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing))})

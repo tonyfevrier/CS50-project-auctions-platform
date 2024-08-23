@@ -48,12 +48,13 @@ class TestListing(TestCase):
     def test_add_to_watchlist(self):
         self.register_and_login('tony','t@gmail.com','1234','1234')  
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+ 
+        self.assertNotIn('tony',Listings.objects.first().followers)
+        self.client.get('/toggletowatchlist/1')
+        self.assertIn('tony',Listings.objects.first().followers) 
+        self.client.get('/toggletowatchlist/1') 
+        self.assertNotIn('tony',Listings.objects.first().followers)
 
-        self.assertEqual(Listings.objects.first().followed, False)
-        self.client.get('/toggletowatchlist/1')
-        self.assertEqual(Listings.objects.first().followed, True)
-        self.client.get('/toggletowatchlist/1')
-        self.assertEqual(Listings.objects.first().followed, False)
 
     def test_submit_inferior_bid(self):
         """In this case, there should be no bid saved in the database"""
