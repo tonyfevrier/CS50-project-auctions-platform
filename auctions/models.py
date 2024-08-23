@@ -17,9 +17,11 @@ class Listings(models.Model):
     category = models.TextField(default="",null=True,blank=True)
     created_at = models.DateTimeField(default=timezone.now) 
     followed = models.BooleanField(default=False)
+    creator = models.TextField(default="")
 
 
 class Bids(models.Model):
     price = models.FloatField(default=0.)
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE)
+    bidder = models.TextField(default="")
 
