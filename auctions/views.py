@@ -100,5 +100,6 @@ def addtowatchlist(request,id):
     View to add a user to the watchlist
     """
     listing = Listings.objects.get(id=id)
-    listing.followers = True
+    listing.followed = True
+    listing.save()
     return HttpResponseRedirect('')

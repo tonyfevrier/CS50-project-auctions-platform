@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Listing : {{listing.title}}</h1>
-    <form action="/addtowatchlist/listing.id">
+    <form action="/addtowatchlist/listing.id" method="get">
         <input type="submit" value="Add to my watchlist">
     </form>
     <img src="{{listing.url}}" alt="image of the listing">

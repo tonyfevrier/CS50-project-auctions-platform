@@ -32,6 +32,16 @@ class TestListing(TestCase):
         response = self.client.get("/listing/1") 
         self.assertTemplateUsed(response,"auctions/listing.html")
 
+    def test_add_to_watchlist(self):
+        self.register('tony','t@gmail.com','1234','1234') 
+        self.login('tony','1234')
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+
+        self.assertEqual(Listings.objects.first().followed, False)
+        self.client.get('/addtowatchlist/1')
+        self.assertEqual(Listings.objects.first().followed, True)
+
+
 
     def register(self,username,email,password,confirmation):
         self.client.post("/register",data={'username':username,
