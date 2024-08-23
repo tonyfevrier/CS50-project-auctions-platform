@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from auctions.models import Listings 
+from auctions.models import Listings, Bids 
 
 from .models import User
 
@@ -77,6 +77,9 @@ def newlisting(request):
                                 price = request.POST["price"],
                                 url = request.POST["url"],
                                 category = request.POST["category"]) 
+        
+        Bids.objects.create(price = request.POST["price"],
+                            listing = Listings.objects.last())
     return render(request,"auctions/newlisting.html")
 
 
@@ -112,4 +115,5 @@ def submitbid(request,id):
     """
     View launched when a user submit a bid
     """
+
     return HttpResponseRedirect(f'/listing/{id}')

@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from auctions.models import Listings
+from auctions.models import Listings, Bids
 
 
 class TestListing(TestCase):
@@ -13,7 +13,7 @@ class TestListing(TestCase):
         #register a new listing 
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
         
-        #verify registration
+        #verify registration of the listing
         listing = Listings.objects.first() 
 
         self.assertEqual(len(Listings.objects.all()),1)
@@ -23,6 +23,20 @@ class TestListing(TestCase):
         self.assertEqual(listing.price,10.2)
         self.assertEqual(listing.url,"http://test")
         self.assertEqual(listing.category,"toys")
+
+    def test_bid_initialization(self):
+        self.register('tony','t@gmail.com','1234','1234') 
+        self.login('tony','1234')
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+        self.create_a_listing('titre2',"here is the description","100","http://test","toys") 
+
+        bid1 = Bids.objects.first()
+        bid2 = Bids.objects.last()
+        
+        self.assertEqual(bid1.price, 10.2)
+        self.assertEqual(bid1.listing, Listings.objects.get(id=1))
+        self.assertEqual(bid2.price, 100)
+        self.assertEqual(bid2.listing, Listings.objects.get(id=2))
 
     def test_listing(self): 
         self.register('tony','t@gmail.com','1234','1234') 

@@ -23,6 +23,7 @@ Listing Page: Clicking on a listing should take users to a page specific to that
     If the user is signed in, the user should be able to bid on the item. The bid must be at least as large as the starting bid, and must be greater than any other bids that have been placed (if any). If the bid doesn’t meet those criteria, the user should be presented with an error.
         - `créer une url pour le bid`
         - `créer le modèle pour les bid (prix, doit être associée à un listing donné Foreignkey?)`
+        - ajouter un bid lors de l'enregistrement du listing.
         - créer la vue associée en enregistrant le bid
         - passer le nb de bids effectués au listing.html
         - ne pas oublier de présenter une erreur à passer à la vue si les critères non respectés
