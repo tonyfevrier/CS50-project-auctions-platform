@@ -6,7 +6,6 @@ from auctions.models import Listings
 class TestListing(TestCase):
 
     def test_listing_registration(self):
-
         #register and login to access the newlisting view
         self.register('tony','t@gmail.com','1234','1234') 
         self.login('tony','1234')
@@ -38,8 +37,10 @@ class TestListing(TestCase):
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
 
         self.assertEqual(Listings.objects.first().followed, False)
-        self.client.get('/addtowatchlist/1')
+        self.client.get('/toggletowatchlist/1')
         self.assertEqual(Listings.objects.first().followed, True)
+        self.client.get('/toggletowatchlist/1')
+        self.assertEqual(Listings.objects.first().followed, False)
 
 
 

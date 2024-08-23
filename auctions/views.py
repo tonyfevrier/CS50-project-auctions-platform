@@ -95,11 +95,11 @@ def watchlist(request):
     return render(request,"auctions/watchlist.html")
 
 
-def addtowatchlist(request,id):
+def toggletowatchlist(request,id):
     """
     View to add a user to the watchlist
     """
     listing = Listings.objects.get(id=id)
-    listing.followed = True
+    listing.followed = not listing.followed
     listing.save()
-    return HttpResponseRedirect('')
+    return HttpResponseRedirect(f'/listing/{id}')
