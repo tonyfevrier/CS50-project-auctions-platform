@@ -1,0 +1,16 @@
+.listing {
+  display: block;
+  width: 80%;
+  margin: auto;
+  text-decoration: none;
+  color: black;
+}
+.listing .title-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.listing .title-price p {
+  font-size: 20px;
+  font-weight: 600;
+}/*# sourceMappingURL=listing.css.map */

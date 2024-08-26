@@ -1,10 +1,14 @@
 {% extends "auctions/layout.html" %}
+{%load static%}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'auctions/listing.css'%}">
+{% endblock %}
 {% block body %}
     <h2>My watchlist</h2>
 
     {% for listing in watchlistings %}
-    <a href="/listing/{{listing.id}}">
+    <a href="/listing/{{listing.id}}" class="listing">
         <div class="title-price">            
             <p>{{listing.title}}</p>
             <p>{{listing.price}} eur</p>
