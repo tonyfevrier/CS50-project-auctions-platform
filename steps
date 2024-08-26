@@ -34,7 +34,8 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `ajouter un bouton close sous condition que les deux users sont les mêmes `
         - `bug le bouton n'apparaît pas dans ma page quand je run server`
         - `créer une vue et éventuellement une url pour la suppression du listing.`
-        - ajouter à l'info d'un listing dans models une case winner qui n'est remplie qu'à la fermeture
+        - `ajouter à l'info d'un listing dans models une case winner`
+        - view : le winner n'est rempli qu'à la fermeture`
         - passer le winner au html 
         - dans l'html, ne charger le contenu classique que s'il n'y a pas de winner.
     If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
@@ -48,6 +49,8 @@ Listing Page: Clicking on a listing should take users to a page specific to that
 `Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.`
     - `create url, template, view for watchlist`
     - `add a button to go to watchlist of a login user redirecting to the watchlist`
+- Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
+- Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
 
 - CSS todo : Be creative on my CSS
 - voir si des vues requièrent le loginrequired
