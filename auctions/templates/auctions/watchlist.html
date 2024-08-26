@@ -5,12 +5,18 @@
 
     {% for listing in watchlistings %}
     <a href="/listing/{{listing.id}}">
-        <p>{{listing.title}}</p>
-        <p>{{listing.description}}</p>
-        <p>{{listing.price}} eur</p>
-        <p>{{listing.category}}</p>
-        <p>{{listing.created_at}}</p>
-        <img src="{{listing.url}}" alt="Image de la vente">
+        <div class="title-price">            
+            <p>{{listing.title}}</p>
+            <p>{{listing.price}} eur</p>
+        </div>
+        <div class="photo-additional-infos">
+            <img src="{{listing.url}}" alt="Image de la vente">
+            <div class="additional-infos">
+                <p><strong>Description:</strong> {{listing.description}}</p>
+                <p><strong>Category:</strong> {{listing.category}}</p>
+                <p><strong>Created at:</strong>{{listing.created_at}} <strong>by</strong> {{listing.creator}}</p>
+            </div>
+        </div>
     </a>
     {% endfor %}
 

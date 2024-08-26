@@ -5,7 +5,7 @@
     {% if not listing.winner %}
         {% if user.is_authenticated %}
             <form action="/toggletowatchlist/{{listing.id}}" method="get">
-                {% if listing.followed %}
+                {% if userisfollower %}
                     <input type="submit" value="Remove from my watchlist">
                 {% else %}
                     <input type="submit" value="Add to my watchlist">
@@ -40,6 +40,8 @@
                 <input type="submit">
             </form>
         {% endif %}
+    {% elif useriswinner %}
+        <p> Congratulations! You won this auction.</p>
     {% else %}
         <p>The auction has been closed</p>
     {% endif %}

@@ -29,7 +29,7 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `ne pas oublier de présenter une erreur à passer à la vue si les critères non respectés`
         - `tester l'enregistrement des bids dans la bdd`
         - `changer le prix dans la vue de listing au fur et à mesure de son augmentation.`
-    If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.
+    `If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.`
         - `passer l'info du user à la page et l'info du créateur du listing (passer juste l'info de l'égalité entre les deux users)`
         - `ajouter un bouton close sous condition que les deux users sont les mêmes `
         - `bug le bouton n'apparaît pas dans ma page quand je run server`
@@ -37,8 +37,8 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `ajouter à l'info d'un listing dans models une case winner`
         - `view : le winner n'est rempli qu'à la fermeture`
         - `passer le winner au html` 
-        - dans l'html, ne charger le contenu classique que s'il n'y a pas de winner.
-    If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
+        - `dans l'html, ne charger le contenu classique que s'il n'y a pas de winner.` 
+    `If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.`
     Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.
         - `bid ajouter au model l'user qui fait le bid.`
         - `passer à la view listing l'info du user qui regarde`

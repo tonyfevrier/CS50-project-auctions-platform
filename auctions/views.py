@@ -91,10 +91,14 @@ def listing(request, id):
     """  
     listing = Listings.objects.get(id = id) 
     useriscreator = (request.user.username == listing.creator) 
+    userisfollower = (request.user.username in listing.followers)
+    useriswinner = (request.user.username == listing.winner)
     return render(request,"auctions/listing.html", context={"listing":listing,
                                                             "bid":Bids.objects.filter(listing=listing).last(),
                                                             "bidnumber":len(Bids.objects.filter(listing=listing)),
-                                                            "useriscreator":useriscreator})
+                                                            "useriscreator":useriscreator,
+                                                            "userisfollower":userisfollower,
+                                                            "useriswinner":useriswinner})
 
 
 @login_required
@@ -104,7 +108,7 @@ def watchlist(request):
     """ 
     watchlistings = []
     for listing in Listings.objects.all():
-        if request.user.username in listing:
+        if request.user.username in listing.followers:
             watchlistings.append(listing)
     return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
 
