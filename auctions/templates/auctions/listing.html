@@ -34,5 +34,9 @@
         <li>Listed by : USER</li>
         <li>Category : {{listing.category}}</li>
     </ul>
-
+    {% if useriscreator %}
+        <form action="">
+            <input type="submit">
+        </form>
+    {% endif %}
 {% endblock %}

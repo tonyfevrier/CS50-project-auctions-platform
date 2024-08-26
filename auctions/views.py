@@ -90,9 +90,11 @@ def listing(request, id):
     View rendering the listing associated with the listing id 
     """  
     listing = Listings.objects.get(id = id) 
+    useriscreator = (request.user.username == listing.creator) 
     return render(request,"auctions/listing.html", context={"listing":listing,
                                                             "bid":Bids.objects.filter(listing=listing).last(),
-                                                            "bidnumber":len(Bids.objects.filter(listing=listing))})
+                                                            "bidnumber":len(Bids.objects.filter(listing=listing)),
+                                                            "useriscreator":useriscreator})
 
 
 @login_required

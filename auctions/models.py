@@ -15,8 +15,7 @@ class Listings(models.Model):
     price = models.FloatField(default=0.)
     url = models.URLField(default="",null=True,blank=True)
     category = models.TextField(default="",null=True,blank=True)
-    created_at = models.DateTimeField(default=timezone.now) 
-    #followed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)  
     followers = models.JSONField(default=[])
     creator = models.TextField(default="")
 
