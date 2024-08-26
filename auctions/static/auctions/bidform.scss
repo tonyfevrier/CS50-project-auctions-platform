@@ -1,0 +1,40 @@
+@use 'listing.scss' as listing;
+
+$hovercolor:rgb(25, 176, 247);
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: listing.$padding-ref;
+    border-bottom: 1px solid listing.$verylightgray;
+
+    .bid{
+        form{
+            display: flex;
+
+            .bidinput{ 
+                margin-right: listing.$padding-ref;
+                &:hover,&:focus{
+                    border-color:$hovercolor;
+                    color: $hovercolor;
+                }
+            }
+        }
+
+        .message{
+            color: red;
+            font-style: italic;
+        }
+    }
+}
+
+input[type='submit']{
+    background-color: white;
+    border: solid 1px listing.$verylightgray;
+
+    &:hover{
+        background-color: listing.$verylightgray;
+        color: $hovercolor;
+    }
+}

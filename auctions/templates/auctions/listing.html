@@ -1,7 +1,70 @@
 {% extends "auctions/layout.html" %}
+{%load static%}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'auctions/listing.css'%}">
+    <link rel="stylesheet" href="{% static 'auctions/bidform.css'%}">
+{% endblock %}
 
 {% block body %}
-    <h1>Listing : {{listing.title}}</h1>
+    {% if not listing.winner %}
+        <div class="listing">
+            <div class="title-price">            
+                <p>{{listing.title}}</p>
+                <p>{{bid.price}} eur</p>
+            </div>
+            {% if user.is_authenticated %}
+                <div class = "form">
+                    <div class="bid">
+                        {% if bidnumber == 1 %}
+                            <p>This is the initial bid.</p>
+                        {% else %}
+                            <p>There are {{bidnumber}} bids.</p>
+                        {% endif %}
+                        <form action="/listing/{{listing.id}}/submitbid" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="bid" id="bid" class="bidinput">
+                            <input type="submit" value="Place bid">
+                        </form>
+                        {% if message %}
+                            <p class="message">{{message}}</p>
+                        {% endif %}
+                    </div>
+                    <form action="/toggletowatchlist/{{listing.id}}" method="get">
+                        {% if userisfollower %}
+                            <input type="submit" value="Remove from my watchlist">
+                        {% else %}
+                            <input type="submit" value="Add to my watchlist">
+                        {% endif %}
+                    </form>
+                    {% if useriscreator %}
+                        <form action="/listing/{{listing.id}}/deletelisting" method="get">
+                            <input type="submit" value="Close auction">
+                        </form>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="photo-additional-infos">
+                <div class="additional-infos">
+                    <p><strong>Description:</strong> {{listing.description}}</p>
+                    <p><strong>Category:</strong> {{listing.category}}</p>
+                    <p><strong>Created at:</strong> {{listing.created_at}}</p>
+                    <p><strong>Creator :</strong> {{listing.creator}}</p>
+                </div>
+                {% if listing.url %}
+                    <img src="{{listing.url}}" alt="Image de la vente">
+                {% endif %}
+            </div>
+        </div>
+    {% elif useriswinner %}
+        <p> Congratulations! You won this auction.</p>
+    {% else %}
+        <p>The auction has been closed</p>
+    {% endif %}
+
+
+
+    <!--<h1>Listing : {{listing.title}}</h1>
     {% if not listing.winner %}
         {% if user.is_authenticated %}
             <form action="/toggletowatchlist/{{listing.id}}" method="get">
@@ -44,5 +107,7 @@
         <p> Congratulations! You won this auction.</p>
     {% else %}
         <p>The auction has been closed</p>
-    {% endif %}
+    {% endif %}-->
+
+
 {% endblock %}

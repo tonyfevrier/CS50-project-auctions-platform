@@ -134,17 +134,24 @@ def submitbid(request,id):
     price = request.POST["bid"]
     listing = Listings.objects.get(id=id)
     lastbid = Bids.objects.filter(listing=listing).last() 
+    useriscreator = (request.user.username == listing.creator) 
+    userisfollower = (request.user.username in listing.followers)
+
     if float(price) <= lastbid.price: 
         message = "You have to write a price superior to the actual price"
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  "bid":lastbid,
                                                                  'message':message,
-                                                                 'bidnumber':len(Bids.objects.filter(listing=listing))})
+                                                                 'bidnumber':len(Bids.objects.filter(listing=listing)),
+                                                                 'useriscreator':useriscreator,
+                                                                 'userisfollower':userisfollower})
     else: 
         bid = Bids.objects.create(price=price, listing=listing, bidder=request.user.username)
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  'bid':bid,
-                                                                 'bidnumber':len(Bids.objects.filter(listing=listing))})
+                                                                 'bidnumber':len(Bids.objects.filter(listing=listing)),
+                                                                 'useriscreator':useriscreator,
+                                                                 'userisfollower':userisfollower})
 
 
 

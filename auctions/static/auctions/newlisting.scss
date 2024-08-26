@@ -1,0 +1,18 @@
+@use 'listing.scss' as listing;
+
+$hovercolor:rgb(25, 176, 247);
+
+input{
+    display: block;
+    margin: 10px;
+
+    &[type='submit']{
+        background-color: white;
+        border: solid 1px lightgray;
+
+        &:hover{
+            background-color: listing.$verylightgray;
+            color: $hovercolor;
+        }
+    }
+}

@@ -1,19 +1,48 @@
+$padding-ref: 20px;
+$lightgray: lightgray;
+$verylightgray: rgb(240, 239, 239);
 
 .listing{
     display: block;
     width: 80%;
-    margin: auto;
+    margin: $padding-ref auto;
     text-decoration: none;
     color: black;
+    border: solid 1px $lightgray;
+    border-radius: 10px;
+
+    &:hover{
+        box-shadow: 0 0 0.5em gray;
+        text-decoration: none;
+    }
 
     .title-price{
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: $verylightgray;
+        border-bottom: solid 1px $lightgray;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: $padding-ref;
 
         p{
             font-size: 20px;
             font-weight: 600;
+        }
+    }
+
+    .photo-additional-infos{
+        display: flex;
+        justify-content: space-between;
+        padding: $padding-ref;
+
+        img{
+            width: 50%;
+        }
+
+        p{
+            color: gray;
         }
     }
 }

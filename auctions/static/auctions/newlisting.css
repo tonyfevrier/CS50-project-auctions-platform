@@ -35,4 +35,17 @@
 }
 .listing .photo-additional-infos p {
   color: gray;
-}/*# sourceMappingURL=listing.css.map */
+}
+
+input {
+  display: block;
+  margin: 10px;
+}
+input[type=submit] {
+  background-color: white;
+  border: solid 1px lightgray;
+}
+input[type=submit]:hover {
+  background-color: rgb(240, 239, 239);
+  color: rgb(25, 176, 247);
+}/*# sourceMappingURL=newlisting.css.map */

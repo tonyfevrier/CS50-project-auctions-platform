@@ -35,4 +35,35 @@
 }
 .listing .photo-additional-infos p {
   color: gray;
-}/*# sourceMappingURL=listing.css.map */
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgb(240, 239, 239);
+}
+.form .bid form {
+  display: flex;
+}
+.form .bid form .bidinput {
+  margin-right: 20px;
+}
+.form .bid form .bidinput:hover, .form .bid form .bidinput:focus {
+  border-color: rgb(25, 176, 247);
+  color: rgb(25, 176, 247);
+}
+.form .bid .message {
+  color: red;
+  font-style: italic;
+}
+
+input[type=submit] {
+  background-color: white;
+  border: solid 1px rgb(240, 239, 239);
+}
+input[type=submit]:hover {
+  background-color: rgb(240, 239, 239);
+  color: rgb(25, 176, 247);
+}/*# sourceMappingURL=bidform.css.map */

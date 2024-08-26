@@ -14,12 +14,15 @@
             <p>{{listing.price}} eur</p>
         </div>
         <div class="photo-additional-infos">
-            <img src="{{listing.url}}" alt="Image de la vente">
             <div class="additional-infos">
                 <p><strong>Description:</strong> {{listing.description}}</p>
                 <p><strong>Category:</strong> {{listing.category}}</p>
-                <p><strong>Created at:</strong>{{listing.created_at}} <strong>by</strong> {{listing.creator}}</p>
+                <p><strong>Created at:</strong> {{listing.created_at}}</p>
+                <p><strong>Creator :</strong> {{listing.creator}}</p>
             </div>
+            {% if listing.url %}
+                <img src="{{listing.url}}" alt="Image de la vente">
+            {% endif %}
         </div>
     </a>
     {% endfor %}
