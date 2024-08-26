@@ -33,10 +33,10 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `passer l'info du user à la page et l'info du créateur du listing (passer juste l'info de l'égalité entre les deux users)`
         - `ajouter un bouton close sous condition que les deux users sont les mêmes `
         - `bug le bouton n'apparaît pas dans ma page quand je run server`
-        - `créer une vue et éventuellement une url pour la suppression du listing.`
+        - `créer une vue et éventuellement une url pour la "suppression" du listing.`
         - `ajouter à l'info d'un listing dans models une case winner`
-        - view : le winner n'est rempli qu'à la fermeture`
-        - passer le winner au html 
+        - `view : le winner n'est rempli qu'à la fermeture`
+        - `passer le winner au html` 
         - dans l'html, ne charger le contenu classique que s'il n'y a pas de winner.
     If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
     Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.

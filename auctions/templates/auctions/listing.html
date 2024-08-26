@@ -2,41 +2,45 @@
 
 {% block body %}
     <h1>Listing : {{listing.title}}</h1>
-    {% if user.is_authenticated %}
-        <form action="/toggletowatchlist/{{listing.id}}" method="get">
-            {% if listing.followed %}
-                <input type="submit" value="Remove from my watchlist">
-            {% else %}
-                <input type="submit" value="Add to my watchlist">
+    {% if not listing.winner %}
+        {% if user.is_authenticated %}
+            <form action="/toggletowatchlist/{{listing.id}}" method="get">
+                {% if listing.followed %}
+                    <input type="submit" value="Remove from my watchlist">
+                {% else %}
+                    <input type="submit" value="Add to my watchlist">
+                {% endif %}
+            </form>
+        {% endif %}
+        <img src="{{listing.url}}" alt="image of the listing">
+        <p>{{listing.description}}</p>
+        <h2>{{bid.price}}eur</h2>
+        {% if user.is_authenticated %}
+            {% if message %}
+                <p>{{message}}</p>
             {% endif %}
-        </form>
-    {% endif %}
-    <img src="{{listing.url}}" alt="image of the listing">
-    <p>{{listing.description}}</p>
-    <h2>{{bid.price}}eur</h2>
-    {% if user.is_authenticated %}
-        {% if message %}
-            <p>{{message}}</p>
+            {% if bidnumber == 1 %}
+                <p>This is the initial bid.</p>
+            {% else %}
+                <p>There are {{bidnumber}} bids.</p>
+            {% endif %}
+            <form action="/listing/{{listing.id}}/submitbid" method="post">
+                {% csrf_token %}
+                <input type="text" name="bid" id="bid">
+                <input type="submit" placeholder="Place bid">
+            </form>
         {% endif %}
-        {% if bidnumber == 1 %}
-            <p>This is the initial bid.</p>
-        {% else %}
-            <p>There are {{bidnumber}} bids.</p>
+        <h2>Details</h2>
+        <ul>
+            <li>Listed by : USER</li>
+            <li>Category : {{listing.category}}</li>
+        </ul>
+        {% if useriscreator %}
+            <form action="/listing/{{listing.id}}/deletelisting" method="get">
+                <input type="submit">
+            </form>
         {% endif %}
-        <form action="/listing/{{listing.id}}/submitbid" method="post">
-            {% csrf_token %}
-            <input type="text" name="bid" id="bid">
-            <input type="submit" placeholder="Place bid">
-        </form>
-    {% endif %}
-    <h2>Details</h2>
-    <ul>
-        <li>Listed by : USER</li>
-        <li>Category : {{listing.category}}</li>
-    </ul>
-    {% if useriscreator %}
-        <form action="/listing/{{listing.id}}/deletelisting" method="get">
-            <input type="submit">
-        </form>
+    {% else %}
+        <p>The auction has been closed</p>
     {% endif %}
 {% endblock %}

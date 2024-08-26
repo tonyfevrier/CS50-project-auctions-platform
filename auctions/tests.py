@@ -105,8 +105,9 @@ class TestListing(Utils):
         self.register_and_login('tony','t@gmail.com','1234','1234')  
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
         self.assertEqual(len(Listings.objects.all()), 1)
-        self.client.get("/listing/1/deletelisting")
-        self.assertEqual(len(Listings.objects.all()), 0)
+        self.assertEqual(Listings.objects.first().winner, "")
+        self.client.get("/listing/1/deletelisting") 
+        self.assertNotEqual(Listings.objects.first().winner, "")
 
 
 

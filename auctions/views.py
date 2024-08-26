@@ -149,5 +149,7 @@ def deletelisting(request, id):
     """
     View deleting a given listing.
     """
-    Listings.objects.get(id=id).delete()
+    listing = Listings.objects.get(id=id)
+    listing.winner = request.user.username
+    listing.save()
     return HttpResponseRedirect('/')
