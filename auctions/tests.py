@@ -1,9 +1,10 @@
 from django.test import TestCase
 
 from auctions.models import Listings, Bids
+from auctions.utils import Utils
 
 
-class TestListing(TestCase):
+class TestListing(Utils):
 
     def test_listing_registration(self):
         #register and login to access the newlisting view
@@ -100,32 +101,15 @@ class TestListing(TestCase):
         self.assertEqual(Bids.objects.last().bidder, 'marine')
         self.logout()
 
-    def register(self,username,email,password,confirmation):
-        self.client.post("/register", data={'username':username,
-                                        'email':email,
-                                        'password':password,
-                                        'confirmation':confirmation})
-        
-    def login(self,username,password):
-        self.client.post("/login", data={'username':username,
-                                         'password':password})
-        
-    def logout(self):
-        self.client.post("/logout")
-        
-    def register_and_login(self,username,email,password,confirmation):
-        self.register(username, email, password, confirmation)
-        self.login(username,password)
+    def test_delete_listing(self):
+        self.register_and_login('tony','t@gmail.com','1234','1234')  
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+        self.assertEqual(len(Listings.objects.all()), 1)
+        self.client.get("/listing/1/deletelisting")
+        self.assertEqual(len(Listings.objects.all()), 0)
 
-    def create_a_listing(self,title,description,price,url,category):
-        self.client.post("/newlisting", data={'title':title,
-                                             "description":description,
-                                             "price":price,
-                                             "url":url,
-                                             "category":category}) 
-        
-    def submit_a_bid(self, price, id):
-        self.client.post(f"/listing/{id}/submitbid", data={'bid':price})
+
+
         
 
 

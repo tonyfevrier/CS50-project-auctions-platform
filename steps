@@ -33,7 +33,7 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `passer l'info du user à la page et l'info du créateur du listing (passer juste l'info de l'égalité entre les deux users)`
         - `ajouter un bouton close sous condition que les deux users sont les mêmes `
         - `bug le bouton n'apparaît pas dans ma page quand je run server`
-        - créer une vue et éventuellement une url pour la suppression du listing.
+        - `créer une vue et éventuellement une url pour la suppression du listing.`
         - ajouter à l'info d'un listing dans models une case winner qui n'est remplie qu'à la fermeture
         - passer le winner au html 
         - dans l'html, ne charger le contenu classique que s'il n'y a pas de winner.

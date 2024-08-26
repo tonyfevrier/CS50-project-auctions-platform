@@ -108,7 +108,7 @@ def watchlist(request):
             watchlistings.append(listing)
     return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
 
-
+@login_required
 def toggletowatchlist(request,id):
     """
     View to add a user to the watchlist
@@ -141,3 +141,13 @@ def submitbid(request,id):
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  'bid':bid,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing))})
+
+
+
+@login_required
+def deletelisting(request, id):
+    """
+    View deleting a given listing.
+    """
+    Listings.objects.get(id=id).delete()
+    return HttpResponseRedirect('/')
