@@ -59,6 +59,12 @@
     - `create url, template, view for watchlist`
     - `add a button to go to watchlist of a login user redirecting to the watchlist`
 - Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
+    - `créer une page listant les catégories`
+    - `passer à la vue toutes les catégories.`
+    - `créer l'html associé`
+    - créer une url à variable catégorie renvoyant la liste de tous les listings associés.
+    - écrire la vue qui passe les listings associés
+    - créer l'html associé
 - Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
 
 - CSS todo : Be creative on my CSS 

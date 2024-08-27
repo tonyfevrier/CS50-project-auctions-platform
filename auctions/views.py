@@ -85,6 +85,14 @@ def newlisting(request):
     return render(request,"auctions/newlisting.html")
 
 
+def categories(request):
+    """
+    View rendering a template listing all the categories registered by listings creator
+    """
+    categories = set(listing.category for listing in Listings.objects.all())
+    return render(request, "auctions/categories.html", context={'categories':categories})
+
+
 def listing(request, id):
     """
     View rendering the listing associated with the listing id 
