@@ -57,11 +57,18 @@
             </div>
         </div>
         <footer>
-            <form action="/listing/{listing.id}/savecomment" method="post">
+            <form action="/listing/{{listing.id}}/savecomment" method="post">
                 {% csrf_token%}
                 <textarea name="text" placeholder="Enter your comment here"></textarea>
                 <input type="submit" value="Send">
             </form>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p>{{comment.text}}</p>
+                    <p>made by {{comment.writer}}</p>
+                    <p>{{comment.created_at}}</p>
+                </div>
+            {% endfor %}
         </footer>
     {% elif useriswinner %}
         <p> Congratulations! You won this auction.</p>

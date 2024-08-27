@@ -31,5 +31,7 @@ class Comments(models.Model):
     text = models.TextField(default="")
     writer = models.CharField(default="", max_length=50)
     listing = models.ForeignKey(Listings,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)  
+
 
 

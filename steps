@@ -50,9 +50,10 @@ Listing Page: Clicking on a listing should take users to a page specific to that
         - `models : class comments`
         - `créer url et une vue pour enregistrer les comments`
         - `réinitialiser la bdd`
-        - passer les comments à listing
-        - les afficher dans le html
+        - `passer les comments à listing`
+        - `les afficher dans le html`
         - `test vérifier le bon enregistrement.`
+        - `ajouter bdd une date heure de comment et les afficher du plus récent au plus ancien (trier à l'aide de leurs id)`
         - css des commentaires.
 `Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.`
     - `create url, template, view for watchlist`

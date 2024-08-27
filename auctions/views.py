@@ -98,7 +98,8 @@ def listing(request, id):
                                                             "bidnumber":len(Bids.objects.filter(listing=listing)),
                                                             "useriscreator":useriscreator,
                                                             "userisfollower":userisfollower,
-                                                            "useriswinner":useriswinner})
+                                                            "useriswinner":useriswinner,
+                                                            "comments":reversed(Comments.objects.filter(listing=listing))})
 
 
 @login_required
@@ -145,14 +146,16 @@ def submitbid(request,id):
                                                                  'message':message,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing)),
                                                                  'useriscreator':useriscreator,
-                                                                 'userisfollower':userisfollower})
+                                                                 'userisfollower':userisfollower,
+                                                                 "comments":reversed(Comments.objects.filter(listing=listing))})
     else: 
         bid = Bids.objects.create(price=price, listing=listing, bidder=request.user.username)
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  'bid':bid,
                                                                  'bidnumber':len(Bids.objects.filter(listing=listing)),
                                                                  'useriscreator':useriscreator,
-                                                                 'userisfollower':userisfollower})
+                                                                 'userisfollower':userisfollower,
+                                                                 "comments":reversed(Comments.objects.filter(listing=listing))})
 
 
 
@@ -173,4 +176,4 @@ def savecomment(request, id):
     View saving the comments
     """
     Comments.objects.create(text=request.POST['text'], writer=request.user.username, listing=Listings.objects.get(id=id))
-    return HttpResponseRedirect(f'/listing/{id}')
+    return HttpResponseRedirect(f'/listing/{id}') 
