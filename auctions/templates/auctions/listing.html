@@ -56,7 +56,7 @@
                 {% endif %}
             </div>
         </div>
-        <footer>
+        <footer class="footer">
             <form action="/listing/{{listing.id}}/savecomment" method="post">
                 {% csrf_token%}
                 <textarea name="text" placeholder="Enter your comment here"></textarea>
@@ -64,9 +64,8 @@
             </form>
             {% for comment in comments %}
                 <div class="comment">
+                    <p><strong>{{comment.writer}} </strong><span> the {{comment.created_at}}</span></p> 
                     <p>{{comment.text}}</p>
-                    <p>made by {{comment.writer}}</p>
-                    <p>{{comment.created_at}}</p>
                 </div>
             {% endfor %}
         </footer>

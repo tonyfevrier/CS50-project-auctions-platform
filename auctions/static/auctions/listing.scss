@@ -47,3 +47,28 @@ $verylightgray: rgb(240, 239, 239);
     }
 }
  
+.footer{ 
+    width: 80%;
+    margin: calc(2*$padding-ref) auto; 
+
+    textarea{
+        width: 100%;
+        border: none;
+        border-bottom: solid 1px;
+
+        &:focus{
+            border:solid 1px rgb(25, 176, 247); 
+        }
+    }
+
+    .comment{ 
+        padding: $padding-ref 0;
+        border-bottom: 1px solid $lightgray;
+        font-size: 14px;
+
+        span{
+            color: gray; 
+            font-size: 12px;
+        }
+    }
+}

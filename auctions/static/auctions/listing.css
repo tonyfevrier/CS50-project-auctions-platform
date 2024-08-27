@@ -35,4 +35,26 @@
 }
 .listing .photo-additional-infos p {
   color: gray;
+}
+
+.footer {
+  width: 80%;
+  margin: 40px auto;
+}
+.footer textarea {
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px;
+}
+.footer textarea:focus {
+  border: solid 1px rgb(25, 176, 247);
+}
+.footer .comment {
+  padding: 20px 0;
+  border-bottom: 1px solid lightgray;
+  font-size: 14px;
+}
+.footer .comment span {
+  color: gray;
+  font-size: 12px;
 }/*# sourceMappingURL=listing.css.map */
