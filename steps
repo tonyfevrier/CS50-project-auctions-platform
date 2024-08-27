@@ -65,7 +65,9 @@
     - `créer une url à variable catégorie renvoyant la liste de tous les listings associés.`
     - `écrire la vue qui passe les listings associés`
     - `créer l'html associé`
+- modifs
     - enlever de index les listings qui ne sont plus actifs.
+    - create listing devrait redireiger vers la listing qu'on a créée.
 - Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
 
 - CSS todo : Be creative on my CSS 

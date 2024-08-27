@@ -10,7 +10,7 @@ from .models import User
 
 
 def index(request):
-    listings = Listings.objects.all()
+    listings = Listings.objects.filter(winner="")
     return render(request, "auctions/index.html",context={'listings':listings})
 
 
@@ -114,7 +114,7 @@ def category_listings(request,category):
     """
     View rendering all listings of a given category
     """
-    listings = Listings.objects.filter(category=category)
+    listings = Listings.objects.filter(category=category, winner="")
     return render(request, "auctions/category_listings.html", context={'category':category, 
                                                                        'listings':listings})
 
@@ -125,7 +125,7 @@ def watchlist(request):
     View rendering the watchlist of a user
     """ 
     watchlistings = []
-    for listing in Listings.objects.all():
+    for listing in Listings.objects.filter(winner=""):
         if request.user.username in listing.followers:
             watchlistings.append(listing)
     return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
