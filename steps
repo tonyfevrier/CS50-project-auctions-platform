@@ -62,9 +62,10 @@
     - `créer une page listant les catégories`
     - `passer à la vue toutes les catégories.`
     - `créer l'html associé`
-    - créer une url à variable catégorie renvoyant la liste de tous les listings associés.
-    - écrire la vue qui passe les listings associés
-    - créer l'html associé
+    - `créer une url à variable catégorie renvoyant la liste de tous les listings associés.`
+    - `écrire la vue qui passe les listings associés`
+    - `créer l'html associé`
+    - enlever de index les listings qui ne sont plus actifs.
 - Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
 
 - CSS todo : Be creative on my CSS 

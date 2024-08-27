@@ -110,6 +110,15 @@ def listing(request, id):
                                                             "comments":reversed(Comments.objects.filter(listing=listing))})
 
 
+def category_listings(request,category):
+    """
+    View rendering all listings of a given category
+    """
+    listings = Listings.objects.filter(category=category)
+    return render(request, "auctions/category_listings.html", context={'category':category, 
+                                                                       'listings':listings})
+
+
 @login_required
 def watchlist(request):
     """
