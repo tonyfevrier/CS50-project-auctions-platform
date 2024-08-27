@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from auctions.models import Listings, Bids
+from auctions.models import Listings, Bids, Comments
 from auctions.utils import Utils
 
 
@@ -108,6 +108,19 @@ class TestListing(Utils):
         self.assertEqual(Listings.objects.first().winner, "")
         self.client.get("/listing/1/deletelisting") 
         self.assertNotEqual(Listings.objects.first().winner, "")
+
+    def test_register_comment(self):
+        self.register_and_login('tony','t@gmail.com','1234','1234')  
+        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
+        self.submit_a_comment('Ceci est un commentaire', '1')
+        self.submit_a_comment('Ceci est un commentaire encore', '1')
+        self.assertIn('Ceci est un commentaire', [comment.text for comment in Comments.objects.all()])
+        self.assertIn('Ceci est un commentaire encore', [comment.text for comment in Comments.objects.all()])
+        comment = Comments.objects.first()
+        self.assertEqual(comment.listing, Listings.objects.first())
+        self.assertEqual(comment.writer, 'tony')
+        
+
 
 
 

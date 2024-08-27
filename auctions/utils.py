@@ -29,3 +29,6 @@ class Utils(TestCase):
         
     def submit_a_bid(self, price, id):
         self.client.post(f"/listing/{id}/submitbid", data={'bid':price})
+
+    def submit_a_comment(self, text, id):
+        self.client.post(f"/listing/{id}/savecomment", data={'text':text})

@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from auctions.models import Listings, Bids 
+from auctions.models import Listings, Bids, Comments 
 
 from .models import User
 
@@ -112,6 +112,7 @@ def watchlist(request):
             watchlistings.append(listing)
     return render(request,"auctions/watchlist.html",context={'watchlistings':watchlistings})
 
+
 @login_required
 def toggletowatchlist(request,id):
     """
@@ -164,3 +165,12 @@ def deletelisting(request, id):
     listing.winner = request.user.username
     listing.save()
     return HttpResponseRedirect('/')
+
+
+@login_required
+def savecomment(request, id):
+    """
+    View saving the comments
+    """
+    Comments.objects.create(text=request.POST['text'], writer=request.user.username, listing=Listings.objects.get(id=id))
+    return HttpResponseRedirect(f'/listing/{id}')

@@ -57,9 +57,9 @@
             </div>
         </div>
         <footer>
-            <form action="" method="post">
+            <form action="/listing/{listing.id}/savecomment" method="post">
                 {% csrf_token%}
-                <textarea name="comment" placeholder="Enter your comment here"></textarea>
+                <textarea name="text" placeholder="Enter your comment here"></textarea>
                 <input type="submit" value="Send">
             </form>
         </footer>
