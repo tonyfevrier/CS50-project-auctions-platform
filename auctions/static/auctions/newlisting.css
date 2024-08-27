@@ -37,13 +37,40 @@
   color: gray;
 }
 
-footer {
+.footer {
   width: 80%;
-  margin: 20px auto;
+  margin: 40px auto;
 }
+.footer textarea {
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px;
+}
+.footer textarea:focus {
+  border: solid 1px rgb(25, 176, 247);
+}
+.footer .comment {
+  padding: 20px 0;
+  border-bottom: 1px solid lightgray;
+  font-size: 14px;
+}
+.footer .comment span {
+  color: gray;
+  font-size: 12px;
+}
+
 input {
   display: block;
   margin: 10px;
+}
+input[type=text], input[type=url] {
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+input[type=text]:hover, input[type=text]:focus, input[type=url]:hover, input[type=url]:focus {
+  border-color: rgb(25, 176, 247);
+  color: rgb(25, 176, 247);
+  outline: none;
 }
 input[type=submit] {
   background-color: white;

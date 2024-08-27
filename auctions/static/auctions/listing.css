@@ -30,11 +30,29 @@
   justify-content: space-between;
   padding: 20px;
 }
+.listing .photo-additional-infos .additional-infos {
+  width: 50%;
+}
+@media only screen and (max-width:847px) {
+  .listing .photo-additional-infos .additional-infos {
+    width: 100%;
+  }
+}
 .listing .photo-additional-infos img {
   width: 50%;
 }
+@media only screen and (max-width:847px) {
+  .listing .photo-additional-infos img {
+    width: 100%;
+  }
+}
 .listing .photo-additional-infos p {
   color: gray;
+}
+@media only screen and (max-width:847px) {
+  .listing .photo-additional-infos {
+    display: block;
+  }
 }
 
 .footer {

@@ -82,6 +82,7 @@ def newlisting(request):
         Bids.objects.create(price = request.POST["price"],
                             listing = Listings.objects.last(),
                             bidder = request.user.username)
+        return HttpResponseRedirect(f'/listing/{Listings.objects.last().id}')
     return render(request,"auctions/newlisting.html")
 
 

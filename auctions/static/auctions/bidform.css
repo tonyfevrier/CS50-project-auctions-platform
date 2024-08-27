@@ -1,52 +1,14 @@
-.listing {
-  display: block;
-  width: 80%;
-  margin: 20px auto;
-  text-decoration: none;
-  color: black;
-  border: solid 1px lightgray;
-  border-radius: 10px;
-}
-.listing:hover {
-  box-shadow: 0 0 0.5em gray;
-  text-decoration: none;
-}
-.listing .title-price {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgb(240, 239, 239);
-  border-bottom: solid 1px lightgray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 20px;
-}
-.listing .title-price p {
-  font-size: 20px;
-  font-weight: 600;
-}
-.listing .photo-additional-infos {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-.listing .photo-additional-infos img {
-  width: 50%;
-}
-.listing .photo-additional-infos p {
-  color: gray;
-}
-
-footer {
-  width: 80%;
-  margin: 20px auto;
-}
 .form {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgb(240, 239, 239);
+}
+@media only screen and (max-width:847px) {
+  .form {
+    display: block;
+  }
 }
 .form .bid form {
   display: flex;
@@ -61,6 +23,11 @@ footer {
 .form .bid .message {
   color: red;
   font-style: italic;
+}
+@media only screen and (max-width:847px) {
+  .form form {
+    margin-top: 10px;
+  }
 }
 
 input[type=submit] {

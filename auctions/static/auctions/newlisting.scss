@@ -6,6 +6,17 @@ input{
     display: block;
     margin: 10px;
 
+    &[type='text'], &[type='url']{
+        border: none;
+        border-bottom: 1px solid lightgray;
+
+        &:hover, &:focus{
+            border-color: $hovercolor;
+            color: $hovercolor;
+            outline: none;
+        }
+    }
+
     &[type='submit']{
         background-color: white;
         border: solid 1px lightgray;

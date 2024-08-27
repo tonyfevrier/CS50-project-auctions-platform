@@ -1,20 +1,27 @@
-@use 'listing.scss' as listing;
-
+$padding-ref: 20px;
+$lightgray: lightgray;
+$verylightgray: rgb(240, 239, 239);
 $hovercolor:rgb(25, 176, 247);
+$medium: 847px;
+$medium-low: "only screen and (max-width:#{$medium})"; 
 
 .form{
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    padding: listing.$padding-ref;
-    border-bottom: 1px solid listing.$verylightgray;
+    padding: $padding-ref;
+    border-bottom: 1px solid $verylightgray;
+
+    @media #{$medium-low} {
+        display: block;
+    }
 
     .bid{
         form{
             display: flex;
 
             .bidinput{ 
-                margin-right: listing.$padding-ref;
+                margin-right: $padding-ref;
                 &:hover,&:focus{
                     border-color:$hovercolor;
                     color: $hovercolor;
@@ -27,14 +34,20 @@ $hovercolor:rgb(25, 176, 247);
             font-style: italic;
         }
     }
+
+    form{
+        @media #{$medium-low} {
+            margin-top: 10px;
+        }
+    }
 }
 
 input[type='submit']{
     background-color: white;
-    border: solid 1px listing.$verylightgray;
+    border: solid 1px $verylightgray;
 
     &:hover{
-        background-color: listing.$verylightgray;
+        background-color: $verylightgray;
         color: $hovercolor;
     }
 }

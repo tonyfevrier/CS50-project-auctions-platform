@@ -58,25 +58,29 @@
 `Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.`
     - `create url, template, view for watchlist`
     - `add a button to go to watchlist of a login user redirecting to the watchlist`
-- Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
+- `Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.`
     - `créer une page listant les catégories`
     - `passer à la vue toutes les catégories.`
     - `créer l'html associé`
     - `créer une url à variable catégorie renvoyant la liste de tous les listings associés.`
     - `écrire la vue qui passe les listings associés`
     - `créer l'html associé`
-- modifs
-    - enlever de index les listings qui ne sont plus actifs.
-    - create listing devrait redireiger vers la listing qu'on a créée.
+- `modifs`
+    - `enlever de index les listings qui ne sont plus actifs.`
+    - `create listing devrait redireiger vers la listing qu'on a créée.`
 - Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
+    voir comment avoir accès aux bdd en tant qu'admin et agir dessus
 
 - CSS todo : Be creative on my CSS 
     - `mettre le prix des listings ailleurs car la fermeture de l'enchère y sera positionnée ou alors faire une deuxième barre de soumission avec les forms juste avant les descriptions.`
     - `bug quand je soumets bid ça a l'air de jouer sur close auction.`
-    - responsive à améliorer
-- voir si des vues requièrent le loginrequired
+    - `description, et texte ne doivent pas prendre plus de 50% de la place`
+    - `css des catégories, faire des boutons sympas`
+    - `responsive à améliorer`
+    - `bug dans category les liens a sont impactés par le css`
+- `voir si des vues requièrent le loginrequired`
 
 # Idées de + : 
 
-- ajouter à chaque listing, l'utilisateur qui les publie et un lien vers son mail pour lui écrire.
-- afficher sur la page d'un listing le nb de bids déposes.
+- `ajouter à chaque listing, l'utilisateur qui les publie`
+- `afficher sur la page d'un listing le nb de bids déposes.`

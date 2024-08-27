@@ -1,6 +1,8 @@
 $padding-ref: 20px;
 $lightgray: lightgray;
 $verylightgray: rgb(240, 239, 239);
+$medium: 847px;
+$medium-low: "only screen and (max-width:#{$medium})"; 
 
 .listing{
     display: block;
@@ -37,13 +39,30 @@ $verylightgray: rgb(240, 239, 239);
         justify-content: space-between;
         padding: $padding-ref;
 
+        .additional-infos{
+            width: 50%;
+
+            @media #{$medium-low} {
+                width:100%
+            }
+        }
+
         img{
             width: 50%;
+
+            @media #{$medium-low} {
+                width:100%
+            }
         }
 
         p{
             color: gray;
         }
+
+        @media #{$medium-low} {
+            display:block;
+        }
+ 
     }
 }
  
