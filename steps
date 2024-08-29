@@ -68,10 +68,11 @@
 - `modifs`
     - `enlever de index les listings qui ne sont plus actifs.`
     - `create listing devrait redireiger vers la listing qu'on a créée.`
-- Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
-    voir comment avoir accès aux bdd en tant qu'admin et agir dessus
+- `Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.`
+    `voir comment avoir accès aux bdd en tant qu'admin et agir dessus, voir video edx sur le sujet`
+- `bug à comprendre : j'ai créé des listings avec marine en superuser mais la bouton close auction n'apparait pas quand je me log avec le compte de marine`
 
-- CSS todo : Be creative on my CSS 
+- `CSS todo : Be creative on my CSS`
     - `mettre le prix des listings ailleurs car la fermeture de l'enchère y sera positionnée ou alors faire une deuxième barre de soumission avec les forms juste avant les descriptions.`
     - `bug quand je soumets bid ça a l'air de jouer sur close auction.`
     - `description, et texte ne doivent pas prendre plus de 50% de la place`
