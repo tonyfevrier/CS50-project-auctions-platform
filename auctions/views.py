@@ -77,11 +77,7 @@ def newlisting(request):
                                 price = request.POST["price"],
                                 url = request.POST["url"],
                                 category = request.POST["category"],
-                                creator = request.user) 
-        
-        Bid.objects.create(price = request.POST["price"],
-                            listing = Listing.objects.last(),
-                            bidder = request.user)
+                                creator = request.user)  
         return HttpResponseRedirect(f'/listing/{Listing.objects.last().id}')
     return render(request,"auctions/newlisting.html")
 
@@ -91,6 +87,7 @@ def categories(request):
     View rendering a template listing all the categories registered by listings creator
     """
     categories = set(listing.category for listing in Listing.objects.all())
+    categories.remove("")
     return render(request, "auctions/categories.html", context={'categories':categories})
 
 
@@ -153,11 +150,15 @@ def submitbid(request,id):
     """     
     price = request.POST["bid"]
     listing = Listing.objects.get(id=id)
-    lastbid = Bid.objects.filter(listing=listing).last() 
+    lastbid = Bid.objects.filter(listing=listing).last()
+    if lastbid is not None:
+        lastprice = lastbid.price   
+    else:
+        lastprice = listing.price
     useriscreator = (request.user == listing.creator) 
     userisfollower = (request.user.username in listing.followers)
 
-    if float(price) <= lastbid.price: 
+    if float(price) <= lastprice: 
         message = "You have to write a price superior to the actual price"
         return render(request, "auctions/listing.html", context={"listing":listing,
                                                                  "bid":lastbid,

@@ -23,22 +23,7 @@ class TestListing(Utils):
         self.assertEqual(listing.price,10.2)
         self.assertEqual(listing.url,"http://test")
         self.assertEqual(listing.category,"toys")
-        self.assertEqual(listing.creator.username, 'tony')
-
-    def test_bid_initialization(self):
-        self.register_and_login('tony','t@gmail.com','1234','1234') 
-        self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
-        self.create_a_listing('titre2',"here is the description","100","http://test","toys") 
-
-        bid1 = Bid.objects.first()
-        bid2 = Bid.objects.last()
-
-        self.assertEqual(bid1.price, 10.2)
-        self.assertEqual(bid1.listing, Listing.objects.get(id=1))
-        self.assertEqual(bid1.bidder.username, 'tony')
-        self.assertEqual(bid2.price, 100)
-        self.assertEqual(bid2.listing, Listing.objects.get(id=2))
-        self.assertEqual(bid2.bidder.username, 'tony')
+        self.assertEqual(listing.creator.username, 'tony') 
 
     def test_listing(self): 
         self.register_and_login('tony','t@gmail.com','1234','1234')  
@@ -74,19 +59,19 @@ class TestListing(Utils):
         """In this case, there should be no bid saved in the database"""
         self.register_and_login('tony','t@gmail.com','1234','1234')  
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys")
-        self.assertEqual(len(Bid.objects.all()), 1)
+        self.assertEqual(len(Bid.objects.all()), 0)
         self.submit_a_bid("10.", 1)
-        self.assertEqual(len(Bid.objects.all()), 1)
+        self.assertEqual(len(Bid.objects.all()), 0)
 
     def test_submit_superior_bid(self):
         """A new bid must be saved in the database for the corresponding listing"""
         self.register_and_login('tony','t@gmail.com','1234','1234')  
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys")
-        self.assertEqual(len(Bid.objects.all()), 1)
+        self.assertEqual(len(Bid.objects.all()), 0)
         self.submit_a_bid("20.", 1)
-        self.assertEqual(len(Bid.objects.all()), 2)
+        self.assertEqual(len(Bid.objects.all()), 1)
         self.submit_a_bid("22.", 1)
-        self.assertEqual(len(Bid.objects.all()), 3)
+        self.assertEqual(len(Bid.objects.all()), 2)
 
     def test_other_user_submit_bid(self):
         """
@@ -96,8 +81,7 @@ class TestListing(Utils):
         self.create_a_listing('titre',"here is the description","10.2","http://test","toys") 
         self.logout()
         self.register_and_login('marine','m@gmail.com','5678','5678') 
-        self.submit_a_bid("100",1)
-        self.assertEqual(Bid.objects.first().bidder.username, 'tony')
+        self.submit_a_bid("100",1) 
         self.assertEqual(Bid.objects.last().bidder.username, 'marine')
         self.logout()
 

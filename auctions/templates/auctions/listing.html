@@ -11,13 +11,19 @@
         <div class="listing">
             <div class="title-price">            
                 <p>{{listing.title}}</p>
-                <p>{{bid.price}} eur</p>
+                {% if bidnumber == 0 %}
+                    <p>{{listing.price}} eur</p>
+                {% else %}
+                    <p>{{bid.price}} eur</p>
+                {% endif %}
             </div>
             {% if user.is_authenticated %}
                 <div class = "form">
                     <div class="bid">
-                        {% if bidnumber == 1 %}
-                            <p>This is the initial bid.</p>
+                        {% if bidnumber == 0 %}
+                            <p>This is the initial price.</p>
+                        {% elif bidnumber == 1 %}
+                            <p>There is {{bidnumber}} bid.</p>
                         {% else %}
                             <p>There are {{bidnumber}} bids.</p>
                         {% endif %}

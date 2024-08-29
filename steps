@@ -72,6 +72,10 @@
     `voir comment avoir accès aux bdd en tant qu'admin et agir dessus, voir video edx sur le sujet`
 - `bug à comprendre : j'ai créé des listings avec marine en superuser mais la bouton close auction n'apparait pas quand je me log avec le compte de marine`
 
+-` enlever le bid initial du créateur car ce n'est pas un bid.`
+- `dans le listing.html, il faudra passer du coup le prix du listing au départ puis le prix du bid`
+- `également changer les conditions sur le bid number.`
+
 - `CSS todo : Be creative on my CSS`
     - `mettre le prix des listings ailleurs car la fermeture de l'enchère y sera positionnée ou alors faire une deuxième barre de soumission avec les forms juste avant les descriptions.`
     - `bug quand je soumets bid ça a l'air de jouer sur close auction.`
@@ -80,6 +84,8 @@
     - `responsive à améliorer`
     - `bug dans category les liens a sont impactés par le css`
 - `voir si des vues requièrent le loginrequired`
+
+- `si pas de catégory, ne pas créer de catégorie associée`
 
 # Idées de + : 
 
